@@ -6,14 +6,14 @@ app=Flask(__name__)
 api=Api(app)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
 db=SQLAlchemy(app)
-db.create_all()
+
 class VideoModel(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(255),nullable=False)
     views=db.Column(db.Integer,nullable=False)
     likes=db.Column(db.Integer,nullable=False)
 
-db.create_all()
+
 
 video_put_args=reqparse.RequestParser()
 video_put_args.add_argument("name",type=str,help="Name of the video",required=True)
